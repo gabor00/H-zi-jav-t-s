@@ -1,0 +1,9 @@
+---
+# vars file for firewall_config
+
+firewall_zone: my_zone
+firewall_interfaces: eth0
+firewall_services:
+  - ssh
+  - samba
+firewall_ports: 4312/tcp

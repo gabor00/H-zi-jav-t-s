@@ -1,0 +1,12 @@
+---
+# tasks file for firewall_config
+
+- name: Create firewall zone
+  firewalld_zone:
+    name: "{{ firewall_zone }}"
+    state: enabled
+    immediate: yes
+    default: reject
+    interfaces: "{{ firelwall_interfaces }}"
+    services: "{{firewall_services }}"
+    ports: "{{ firewall_ports }}"

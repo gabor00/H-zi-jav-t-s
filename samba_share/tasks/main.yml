@@ -1,0 +1,31 @@
+---
+# tasks file for samba_share
+
+- name: Install Samba
+  yum:
+    name: samba
+    state: present
+
+- name: Create guest share directory
+  file:
+    path: "{{ paths }}"
+    state: directory
+    mode: "{{ mode }}"
+
+- name: Configurate Samba
+  lineinfile:
+    path: /etc/samba/smb.conf
+    line: "{{ item }}"
+    insertafter: '^\[global\]'
+  loop:
+    - "map to guest = Bad User"
+    - "guest ok = yes"
+    - "guest only = yes"
+    - "read only = yes"
+  notify: restart samba
+
+- name: Start samba service
+  systemd:
+    name: smb
+    state: started
+    enabled: yes 

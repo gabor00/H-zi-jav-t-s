@@ -1,0 +1,7 @@
+---
+# handlers file for fstab_entry
+
+- name: mount /data/dir
+  mount:
+    name: /data/dir
+    state: mounted

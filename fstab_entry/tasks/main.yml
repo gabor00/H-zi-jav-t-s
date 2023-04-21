@@ -1,0 +1,10 @@
+---
+# tasks file for fstab_entry
+
+- name: Add entry to fstab
+  lineinfile:
+    path: /etc/fstab
+    line: "{{ item }}"
+  notify: mount /data/dir
+  with_items:
+    - "/dev/sdb1 /data/dir ext4 defaults 0 0"

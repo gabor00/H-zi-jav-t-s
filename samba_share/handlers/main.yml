@@ -1,0 +1,7 @@
+---
+# handlers file for samba_share
+
+- name: Restart Samba
+  systemd:
+    name: smb
+    state: restarted

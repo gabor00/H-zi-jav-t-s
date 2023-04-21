@@ -1,0 +1,5 @@
+---
+# vars file for samba_share
+
+paths: /data/dir
+mode: '0755'
